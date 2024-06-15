@@ -1,0 +1,53 @@
+package ThreeDataStructure;
+
+public class StackAdt implements Stack {
+
+    Product[] stack;
+    int top;
+    int maxSize;
+
+    public StackAdt(int maxSize) {
+        this.maxSize = maxSize;
+        top = -1;
+        stack = new Product[maxSize];
+    }
+
+    public void push(Product product) {
+        if (!isFull()) {
+            stack[++top] = product;
+            System.out.println("Pushed the product: " + product.getName() + " $" + product.getAmount());
+        } else {
+            System.out.println("The stack is full.");
+        }
+    }
+
+    public Product pop() {
+        if (!isEmpty()) {
+            return stack[top--];
+        } else {
+            System.out.println("The stack is empty.");
+            return null;
+        }
+    }
+
+    public Product peek() {
+        if (!isEmpty()) {
+            return stack[top];
+        } else {
+            System.out.println("The stack is empty.");
+            return null;
+        }
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == maxSize - 1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+}

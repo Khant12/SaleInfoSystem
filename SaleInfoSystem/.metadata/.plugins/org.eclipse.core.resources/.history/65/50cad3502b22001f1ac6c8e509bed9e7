@@ -1,0 +1,71 @@
+package ThreeDataStructure;
+
+
+public class StactAdt implements Stack {
+
+	int stack [];
+	int top;
+	int maxSize;
+	
+	
+	public StactAdt(int maxSize) {
+		super();
+		this.maxSize = maxSize;
+		top = -1;
+		stack = new int [maxSize];
+	}
+	
+	public void push(int number) {
+		
+		if (!isFull()) {
+			top ++;
+			stack[top] = number;
+			System.out.println("pushed the number "+ number);
+		}
+		else {
+			System.out.println("It is full");
+		}
+		
+	}
+
+	
+	public int pop() {
+		// TODO Auto-generated method stub
+		if (!isEmpty()) {
+			return stack[top--];
+		}else {
+			return -1;
+			
+		}
+		
+	}
+
+	public int peek() {
+		return stack[top];
+	}
+	
+	public boolean isEmpty() {
+	
+		
+		if (top == -1 ) {
+			return true;
+		}
+		return false;
+	}
+
+	
+	public boolean isFull() {
+		// TODO Auto-generated method stub
+		
+		if (top == stack.length-1) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int size() {
+		int result = top+1;
+		return result;
+	}
+
+}

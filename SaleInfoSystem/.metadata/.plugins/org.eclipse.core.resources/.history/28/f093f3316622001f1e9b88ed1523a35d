@@ -1,0 +1,27 @@
+package ThreeDataStructure;
+
+public class StackMain {
+
+    public static void main(String[] args) {
+        StackAdt adt = new StackAdt(5);
+
+        // Create Product instances
+        ArrayListADT
+
+        // Push Product instances onto the stack
+        adt.push(product1);
+        adt.push(product2);
+        adt.push(product3);
+
+        // Pop and display products from the stack
+        while (!adt.isEmpty()) {
+            Product poppedProduct = adt.pop();
+            System.out.println("Popped product: " + poppedProduct.getName() + " $" + poppedProduct.getAmount());
+        }
+
+        System.out.println(adt.isEmpty());
+    }
+}
+
+
+

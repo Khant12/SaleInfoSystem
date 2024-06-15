@@ -1,0 +1,39 @@
+package SaleInfoSystem;
+
+import java.util.List;
+
+public class InsertionSortName {
+	
+	public static void insertionSortOrderList(List<Product> productList) {
+		
+		long startTime = System.currentTimeMillis(); // Start time function
+        int n = productList.size();
+        for (int i = 1; i < n; i++) {
+            Product key = productList.get(i);
+            int j = i - 1;
+
+            // Compare the customer names and shift elements to the right
+            while (j >= 0 && productList.get(j).getName().compareTo(key.getName()) > 0) {
+                productList.set(j + 1, productList.get(j));
+                j = j - 1;
+            }
+            // Insert the key at the correct position
+            productList.set(j + 1, key);
+        }
+        long endTime = System.currentTimeMillis();
+	    long totalTime = endTime - startTime;
+	    System.out.println("Insertion Sort Total time: " + totalTime + "ms\n");
+	    
+	    Runtime runtime = Runtime.getRuntime();
+		runtime.gc();
+		long total = runtime.totalMemory();
+		long free = runtime.freeMemory();
+		long usedMemory = total -free;
+		System.out.println("Total Memory: " + usedMemory + "bytes");
+		long megabytes = usedMemory / (1024L * 1024L);
+		System.out.println("Total Memory: " + megabytes + "MB");
+        
+    }
+}
+
+

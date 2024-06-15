@@ -1,0 +1,12 @@
+package ThreeDataStructure;
+package LinearDataStructure;
+
+public interface Stack {
+	public void push(int number);
+	public int pop ();
+	public int peek ();
+	public boolean isEmpty();
+	public boolean isFull();
+	public int size();
+	
+}

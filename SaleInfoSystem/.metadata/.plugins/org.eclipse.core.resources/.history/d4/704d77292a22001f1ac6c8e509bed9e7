@@ -1,0 +1,14 @@
+package ThreeDataStructure;
+
+package LinearDataStructure;
+
+public interface Queue {
+	
+	public void enqueue(int item);
+	public int dequeue();
+	public int first();
+	public boolean isFull();
+	public boolean isEmpty();
+	public int size();
+	
+}

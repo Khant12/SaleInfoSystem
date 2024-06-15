@@ -1,0 +1,48 @@
+package ThreeDataStructure;
+
+import java.util.ArrayList;
+
+public class ArrayListDSA {
+    private ArrayList<Double> product;
+
+    public ArrayListDSA() {
+        this.product = new ArrayList<>();
+    }
+
+    public void addProduct(double amount) {
+        product.add(amount);
+    }
+
+    public void removeProduct int index) {
+        if (index >= 0 && index < product.size()) {
+        	product.remove(index);
+        } else {
+            System.out.println("Invalid index. Sale not removed.");
+        }
+    }
+
+    public void displaySales() {
+        System.out.println("Sales List:");
+        for (int i = 0; i < product.size(); i++) {
+            System.out.println("Sale " + (i + 1) + ": $" + product.get(i));
+        }
+    }
+
+    public static void main(String[] args) {
+    	ArrayListDSA arrSaleSystem = new ArrayListDSA();
+
+        // Simulate adding product transactions
+    	arrSaleSystem.addProduct(100.50);
+    	arrSaleSystem.addProduct(150.25);
+    	arrSaleSystem.addProduct(75.75);
+
+        // Display all sales
+        salesSystem.displaySales();
+
+        // Remove a sale
+        salesSystem.removeSale(1);
+
+        // Display updated sales list
+        salesSystem.displaySales();
+    }
+}

@@ -1,0 +1,163 @@
+package SaleInfoSystem;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
+public class AdminOrderOp implements AdminOrderInterface {
+
+    private static final String FILENAME = "customerOrders.txt";
+    
+    AdminMenu adminMenu = new AdminMenu();
+    private List<Order> orderList = new ArrayList<>();
+    
+    private Scanner sc = new Scanner(System.in);
+    
+    // Constructor
+    public AdminOrderOp() {
+        // Load orders from file when the AdminOrderOp object is created
+        loadOrdersFromFile();
+    }
+    protected boolean loadOrdersFromFile() {
+        File file = new File(FILENAME);
+        if (!file.exists()) {
+            System.out.println("No order data file found.");
+            return false;
+        }
+        try (Scanner fileScanner = new Scanner(file)) {
+            orderList.clear(); // Clear the existing order list before loading
+            while (fileScanner.hasNextLine()) {
+                String[] parts = fileScanner.nextLine().split(",");
+                if (parts.length == 8) { // Adjust the number of expected fields to include orderNumber
+                    int orderNumber = Integer.parseInt(parts[0]);
+                    int proid = Integer.parseInt(parts[1]);
+                    String prodName = parts[2].trim(); // trim spaces
+                    double totalPrice = Double.parseDouble(parts[3]);
+                    int prodQty = Integer.parseInt(parts[4]);
+                    String custName = parts[5].trim();
+                    String address = parts[6].trim();
+                    String phNumber = parts[7].trim();
+
+                    orderList.add(new Order(orderNumber, proid, prodName, totalPrice, prodQty, custName, address, phNumber));
+                }
+            }
+//            System.out.println("Order data loaded from file.");
+            return true;
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error reading from file: " + e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public void removeOrder() {
+        while (true) {
+            System.out.print("Enter Order Number: ");
+            int orderNum = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            System.out.print("Enter customer name: ");
+            String name = sc.nextLine();
+
+            Iterator<Order> iterator = orderList.iterator();
+            boolean orderFound = false;
+            while (iterator.hasNext()) {
+                Order order = iterator.next();
+                if (order.getOrderNumber() == orderNum && order.getCustomerName().equals(name)) {
+                    iterator.remove(); // Removes the current order from the list
+                    System.out.println("Order Number " + orderNum + " and Customer Name " + name + " has been canceled.");
+                    orderFound = true;
+                    displayOrder();
+                    break;
+                }
+            }
+            if (!orderFound) {
+                System.out.println("No matching order found.");
+            }
+
+            saveAllOrders(); // Save orders to file after removing
+            System.out.print("Do you want to remove another order? (yes/no): ");
+            String choice = sc.nextLine();
+            if (!choice.equalsIgnoreCase("yes")) {
+            	adminMenu.orderManagerMenu();
+            }
+            
+        }
+    }
+    private void saveAllOrders() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILENAME))) {
+            for (Order order : orderList) {
+                writer.println(order.getOrderNumber() + "," + order.getProductId() + "," + order.getProductName() + "," + order.getTotalPrice() + "," + 
+                				order.getQuantity() + "," + order.getCustomerName() + "," + order.getCustomerAddress() + "," + order.getCustomerPhone());
+            }
+            System.out.println("Order data saved to file.");
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void displayOrder() {
+        System.out.println("List of orders:");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("| Order Number | ID  | Product Name         | Total Price | Quantity | Customer Name | Address              | Phone Number  |");
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+        for (Order order : orderList) {
+            System.out.printf("| %-12d | %-3d | %-20s | %-11.2f | %-8d | %-13s | %-20s | %-13s |\n",
+                    order.getOrderNumber(), order.getProductId(), order.getProductName(), order.getTotalPrice(), order.getQuantity(),
+                    order.getCustomerName(), order.getCustomerAddress(), order.getCustomerPhone());
+        }
+        System.out.println("-----------------------------------------------------------------------------------------------------------------------------\n");
+    }
+
+
+	@Override
+	public void sortByName() {
+		
+	     System.out.println("Sorted By Name is success.\n");
+//		
+//		InsertionSortName.insertionSortOrderList(orderList);
+		System.out.println();
+	
+	
+	     saveAllOrders();
+	     displayOrder();
+	     
+	    
+		
+	}
+
+	@Override
+	public void searchOrder() {
+		
+		System.out.println("** Welcome to Search Customer Name ** ");
+        System.out.print("Enter the Customer Name: ");
+        String name = sc.nextLine().trim(); // Trim spaces
+       
+        // Ensure the product list is sorted by name
+//        InsertionSortName.insertionSortOrderList(orderList);
+
+        // Perform the binary search
+        BinarySearchByName.binarySearchOrder(orderList, name);
+		
+		
+	}
+
+	@Override
+	public void BackToAdminMenu() {
+		adminMenu.adminMainMenu();
+		
+	}
+
+	@Override
+	public void exitInterface() {
+		System.out.println("Exiting the program...");
+        System.exit(0);
+		
+	}
+
+
+}

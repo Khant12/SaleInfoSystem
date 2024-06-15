@@ -1,0 +1,11 @@
+package ThreeDataStructure;
+
+public interface Queue {
+    
+    public void enqueue(Product item);
+    public Product dequeue();
+    public Product first();
+    public boolean isFull();
+    public boolean isEmpty();
+    public int size();
+}

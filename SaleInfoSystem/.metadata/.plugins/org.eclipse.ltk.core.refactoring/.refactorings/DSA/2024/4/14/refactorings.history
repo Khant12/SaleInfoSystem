@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;binaryTree&apos; to &apos;Nonlineardatastructure&apos;&#x0A;- Original project: &apos;DSA&apos;&#x0A;- Original element: &apos;DSA/src/binaryTree&apos;&#x0A;- Renamed element: &apos;DSA/src/Nonlineardatastructure&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;binaryTree&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;binaryTree" name="Nonlineardatastructure" qualified="false" references="true" stamp="1712288017349" textual="false" version="1.0"/>
+</session>

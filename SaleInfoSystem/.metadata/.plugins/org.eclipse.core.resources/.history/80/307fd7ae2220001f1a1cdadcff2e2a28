@@ -1,0 +1,69 @@
+package SaleInfoSystem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MergeSortName {
+	
+	
+	long startTime = System.currentTimeMillis(); // Start time function
+	public static void mergeSortProductList(List<Product> productList, int left, int right) {
+		
+	
+		
+        if (left < right) {
+            int mid = (left + right) / 2;
+            mergeSortProductList(productList, left, mid);
+            mergeSortProductList(productList, mid + 1, right);
+            mergeProduct(productList, left, mid, right);
+        }
+        
+        long endTime = System.currentTimeMillis();
+	    long totalTime = endTime - startTime;
+
+	    System.out.println("\nMerge Sort Total time: " + totalTime + "ms\n");
+	    
+	    
+	    Runtime runtime = Runtime.getRuntime();
+		runtime.gc();
+		long total = runtime.totalMemory();
+		long free = runtime.freeMemory();
+		long usedMemory = total -free;
+		System.out.println("Total Memory: " + usedMemory + "bytes");
+		long megabytes = usedMemory / (1024L * 1024L);
+		System.out.println("Total Memory: " + megabytes + "MB\n");
+    }
+
+    public static void mergeProduct(List<Product> productList, int left, int mid, int right) {
+    	
+    	
+        List<Product> temp = new ArrayList<>();
+        int i = left, j = mid + 1;
+
+        while (i <= mid && j <= right) {
+            if (productList.get(i).getName().compareTo(productList.get(j).getName()) <= 0) {
+                temp.add(productList.get(i++));
+            } else {
+                temp.add(productList.get(j++));
+            }
+        }
+
+        while (i <= mid) {
+            temp.add(productList.get(i++));
+        }
+        while (j <= right) {
+            temp.add(productList.get(j++));
+        }
+
+        for (int k = left; k <= right; k++) {
+            productList.set(k, temp.get(k - left));
+        }
+    	
+    
+		
+    }
+    
+    
+
+
+}

@@ -1,0 +1,73 @@
+package ThreeDataStructure;
+
+import java.util.ArrayList;
+
+public class ArrayListDSA {
+    private ArrayList<Product> products;
+
+    public ArrayListDSA() {
+        this.products = new ArrayList<>();
+    }
+
+    public void addProduct(String name, double amount) {
+    	
+
+        Product product = new Product(name, amount);
+        products.add(product);
+        
+    }
+
+    public void removeProduct(int index) {
+        if (index >= 0 && index < products.size()) {
+            products.remove(index);
+        } else {
+            System.out.println("Invalid index. Sale not removed.");
+        }
+    }
+
+    public void displayProducts() {
+        System.out.println("Sales List:");
+        for (int i = 0; i < products.size(); i++) {
+            Product product = products.get(i);
+            System.out.println("Sale " + (i + 1) + ": " + product.getName() + " $" + product.getAmount());
+        }
+    }
+
+    public static void main(String[] args) {
+    	
+    	long startTimeList = System.currentTimeMillis(); 
+    	
+        ArrayListDSA arrSaleSystem = new ArrayListDSA();
+
+        // Simulate adding product transactions
+        arrSaleSystem.addProduct("Product A", 100.50);
+        arrSaleSystem.addProduct("Product B", 150.25);
+        arrSaleSystem.addProduct("Product C", 75.75);
+
+        // Display all products
+        arrSaleSystem.displayProducts();
+
+        // Remove a product
+        arrSaleSystem.removeProduct(1);
+        arrSaleSystem.removeProduct(2);
+
+        // Display updated product list
+        arrSaleSystem.displayProducts();
+        
+        
+        long endTimeList = System.currentTimeMillis();
+        long totalTimeList = endTimeList - startTimeList;
+        System.out.println("List Total time: " + totalTimeList + "ms");
+
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc(); // Optional, but may affect timing
+        long totalMemoryList = runtime.totalMemory();
+        long freeMemoryList = runtime.freeMemory();
+        long usedMemoryList = totalMemoryList - freeMemoryList;
+        long megabytesList = usedMemoryList / (1024L * 1024L);
+        System.out.println("List Total Memory: " + megabytesList + " MB\n");
+    }
+
+}
+
+

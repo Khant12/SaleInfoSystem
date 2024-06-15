@@ -1,0 +1,49 @@
+package ThreeDataStructure;
+
+public class StackMain {
+
+    public static void main(String[] args) {
+    	
+    	long startTimeStack = System.currentTimeMillis(); // Start time function
+    	
+        StackAdt adt = new StackAdt(5);
+
+        // Create Product instances
+
+		Product p1 = new Product("Choco Ice Cream", 2500, 10);
+		Product p2 = new Product( "Milk Ice Cream", 1500, 5);
+		Product p3 = new Product("StrawBerry Ice Cream", 1500, 5);
+		Product p4 = new Product("BlueBerry Ice Cream", 1500, 5);
+
+
+        // Push Product instances onto the stack
+        adt.push(p1);
+        adt.push(p1);
+        adt.push(p1);
+        adt.push(p4);
+
+        System.out.println();
+
+        System.out.println("Orignial Queue: " + adt.size());
+       
+        
+        
+        long endTimeStack = System.currentTimeMillis();
+        long totalTimeStack = endTimeStack - startTimeStack;
+        System.out.println("Stack Total time: " + totalTimeStack + "ms");
+
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc(); // Optional, but may affect timing
+        long totalMemoryStack = runtime.totalMemory();
+        long freeMemoryStack = runtime.freeMemory();
+        long usedMemoryStack = totalMemoryStack - freeMemoryStack;
+        long megabytesStack = usedMemoryStack / (1024L * 1024L);
+        System.out.println("Stack Total Memory: " + megabytesStack + " MB\n");
+        
+        
+        
+    }
+}
+
+
+

@@ -1,0 +1,51 @@
+package ThreeDataStructure;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SaleInformationSystem {
+    private Queue<Double> salesQueue;
+
+    public SaleInformationSystem() {
+        this.salesQueue = new LinkedList<>();
+    }
+
+    public void enqueue(double amount) {
+        salesQueue.add(amount);
+    }
+
+    public double dequeue() {
+        if (!salesQueue.isEmpty()) {
+            return salesQueue.poll();
+        } else {
+            System.out.println("No sale to dequeue.");
+            return -1.0; // Return a sentinel value
+        }
+    }
+
+    public void displaySales() {
+        System.out.println("Sales Queue:");
+        for (double sale : salesQueue) {
+            System.out.println("$" + sale);
+        }
+    }
+
+    public static void main(String[] args) {
+        SaleInformationSystem salesSystem = new SaleInformationSystem();
+
+        // Simulate adding sales transactions
+        salesSystem.enqueue(100.50);
+        salesSystem.enqueue(150.25);
+        salesSystem.enqueue(75.75);
+
+        // Display all sales
+        salesSystem.displaySales();
+
+        // Dequeue a sale
+        double dequeuedSale = salesSystem.dequeue();
+        System.out.println("Dequeued sale: $" + dequeuedSale);
+
+        // Display updated sales queue
+        salesSystem.displaySales();
+    }
+}

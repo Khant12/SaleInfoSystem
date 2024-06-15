@@ -1,0 +1,25 @@
+package ThreeDataStructure;
+
+public class StackMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StackAdt  adt = new StactAdt (4);
+		
+		
+		adt.push(10);
+		adt.push(25);
+		adt.push(35);
+		
+		while(!adt.isEmpty()) {
+			adt.pop();
+		}
+		
+		System.out.println(adt.isEmpty());
+	
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,85 @@
+package ThreeDataStructure;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class SaleInformationSystem {
+    private Deque<Sale> recentSalesStack;
+
+    public SaleInformationSystem() {
+        this.recentSalesStack = new ArrayDeque<>();
+    }
+
+    public void push(String productName, double price) {
+        recentSalesStack.push(new Sale(productName, price));
+    }
+
+    public Sale pop() {
+        if (!recentSalesStack.isEmpty()) {
+            return recentSalesStack.pop();
+        } else {
+            System.out.println("No sale to pop.");
+            return null;
+        }
+    }
+
+    public Sale peek() {
+        if (!recentSalesStack.isEmpty()) {
+            return recentSalesStack.peek();
+        } else {
+            System.out.println("No sale to peek.");
+            return null;
+        }
+    }
+
+    public void displayRecentSales(int numSales) {
+        System.out.println("Recent Sales:");
+        int count = 0;
+        for (Sale sale : recentSalesStack) {
+            if (count >= numSales) break;
+            System.out.println(sale.getProductName() + " - $" + sale.getPrice());
+            count++;
+        }
+    }
+
+    public static void main(String[] args) {
+        SaleInformationSystem salesSystem = new SaleInformationSystem();
+
+        // Simulate adding sales transactions
+        salesSystem.push("Product A", 100.50);
+        salesSystem.push("Product B", 150.25);
+        salesSystem.push("Product C", 75.75);
+
+        // Display recent sales
+        salesSystem.displayRecentSales(2);
+
+        // Pop a sale
+        Sale poppedSale = salesSystem.pop();
+        System.out.println("Popped sale: " + poppedSale.getProductName() + " - $" + poppedSale.getPrice());
+
+        // Display recent sales after popping
+        salesSystem.displayRecentSales(2);
+
+        // Peek at the top sale
+        Sale peekedSale = salesSystem.peek();
+        System.out.println("Top sale: " + peekedSale.getProductName() + " - $" + peekedSale.getPrice());
+    }
+}
+
+class Sale {
+    private String productName;
+    private double price;
+
+    public Sale(String productName, double price) {
+        this.productName = productName;
+        this.price = price;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}

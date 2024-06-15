@@ -1,0 +1,64 @@
+package ThreeDataStructure;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class ArrayListADT {
+
+	public static void main(String[] args) {
+		
+		
+		long startTimeStack = System.currentTimeMillis(); // Start time function
+		
+		
+		ArrayList<Product> p = new ArrayList<Product>();
+
+		Product p1 = new Product("Choco Ice Cream", 2500, 10);
+		Product p2 = new Product( "Milk Ice Cream", 1500, 5);
+		Product p3 = new Product("StrawBerry Ice Cream", 1500, 5);
+		Product p4 = new Product("BlueBerryy Ice Cream", 1500, 5);
+		Product p5 = new Product("Vinalla Ice Cream", 1500, 5);
+
+		//add products
+		p.add(p1);
+		p.add(p2);
+		p.add(p3);
+		p.add(p4);
+		p.add(p5);
+
+		Iterator<Product> itr = p.iterator();
+		while (itr.hasNext()) {
+			Product pro = itr.next(); // return changed object value
+			System.out.println(pro.getName() + " " + pro.getPrice() +  " " + pro.getQuantity());
+			
+
+		}
+		
+		//remove products
+		p.remove(p1);
+		p.remove(p2);
+		p.remove(p3);
+		p.remove(p4);
+		p.remove(p5);
+		
+		
+		Iterator<Product> itr2 = p.iterator();
+		if (!itr2.hasNext()){
+			System.out.println("All products are removed");
+		
+		}
+		
+		long endTimeStack = System.currentTimeMillis();
+        long totalTimeStack = endTimeStack - startTimeStack;
+        System.out.println("Stack Total time: " + totalTimeStack + "ms");
+
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc(); // Optional, but may affect timing
+        long totalMemoryStack = runtime.totalMemory();
+        long freeMemoryStack = runtime.freeMemory();
+        long usedMemoryStack = totalMemoryStack - freeMemoryStack;
+        long megabytesStack = usedMemoryStack / (1024L * 1024L);
+        System.out.println("Stack Total Memory: " + megabytesStack + " MB\n");
+
+	}
+}

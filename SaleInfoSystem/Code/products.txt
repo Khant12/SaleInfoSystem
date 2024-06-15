@@ -1,0 +1,200 @@
+15,Speed,1800,20,Drink
+10,Instant Noodle,800,18,Snack
+39,Almonds,1500,8,Snack
+8,Papaya,1800,4,Fruit
+44,Sparkling Water,500,15,Drink
+12,Bacon,2500,1,Meal
+30,Peach,1100,10,Fruit
+43,Apple Cider,900,16,Drink
+25,Salmon,3000,7,Meal
+36,Black Tea,300,8,Drink
+33,Lemonade,800,12,Drink
+17,Potato Chip,1500,3,Snack
+7,Mango,800,20,Fruit
+20,Shark,1700,20,Drink
+34,Orange Juice,1200,14,Drink
+50,Olive Oil,2500,5,Vegetable oil
+22,Tea,500,15,Drink
+49,Sunflower Oil,1500,5,Vegetable oil
+26,Broccoli,900,10,Vegetable
+28,Granola Bar,400,12,Snack
+45,Mixed Nuts,1800,8,Snack
+31,Cucumber,500,5,Vegetable
+11,Strawberry,2000,10,Fruit
+32,Carrot,600,10,Vegetable
+46,Trail Mix,1400,8,Snack
+38,Spinach,700,8,Vegetable
+18,Coca Cola,1000,20,Drink
+19,J-CUP,500,20,Drink
+21,Coffee,500,20,Drink
+47,Sesame Oil,2000,5,Vegetable oil
+16,Water Bottle,800,18,Drink
+29,Grapefruit,900,15,Fruit
+37,Lemon Tea,350,12,Drink
+24,Blueberry,1200,10,Fruit
+6,Banana,1200,13,Fruit
+2,Nabati,500,8,Snack
+23,Apple Pie,700,8,Dessert
+4,Soybean oil,2500,3,Vegetable oil
+1,Apple,500,15,Fruit
+5,Avocado,2500,1,Fruit
+14,Chicken,5000,10,Meal
+27,Chocolate Bar,600,5,Snack
+3,Egg,350,13,Food
+40,Peanuts,1200,10,Snack
+42,Coconut Water,1000,12,Drink
+35,Green Tea,300,10,Drink
+48,Canola Oil,1200,5,Vegetable oil
+9,Orange,1000,13,Fruit
+13,Beef,2000,7,Meal
+41,Cashews,1600,10,Snack
+51,Broccoli Salad,700,8,Salad
+52,Spinach Dip,600,8,Dip
+53,Beef Stew,1200,10,Meal
+54,Chicken Salad,1000,10,Salad
+55,Tomato Sauce,500,10,Sauce
+56,Barbecue Sauce,600,10,Sauce
+57,Hot Sauce,400,8,Sauce
+58,Pesto Sauce,700,8,Sauce
+59,Curry Powder,300,5,Spice
+60,Cinnamon,400,5,Spice
+61,Cloves,300,5,Spice
+62,Ginger,500,5,Spice
+63,Chili Powder,400,5,Spice
+64,Cumin,300,3,Spice
+65,Paprika,400,5,Spice
+66,Cardamom,500,5,Spice
+67,Turmeric,400,3,Spice
+68,Nutmeg,300,5,Spice
+69,Coriander,400,5,Spice
+70,Sage,300,5,Spice
+71,Chives,400,5,Herb
+72,Dill,300,3,Herb
+73,Cilantro,400,5,Herb
+74,Parsley,300,5,Herb
+75,Thyme,400,5,Herb
+76,Basil,300,5,Herb
+77,Rosemary,400,1,Herb
+78,Oregano,300,5,Herb
+79,Mint,400,5,Herb
+80,Lavender,300,2,Herb
+81,Saffron,1000,5,Spice
+82,Steak Sauce,600,8,Sauce
+83,Tartar Sauce,500,8,Sauce
+84,Cocktail Sauce,400,8,Sauce
+85,Hollandaise Sauce,700,8,Sauce
+86,Tahini,500,10,Sauce
+87,Marinara Sauce,600,10,Sauce
+88,Alfredo Sauce,700,8,Sauce
+89,Hoisin Sauce,600,10,Sauce
+90,Soy Sauce,500,8,Sauce
+91,Teriyaki Sauce,700,8,Sauce
+92,Apple Sauce,500,7,Sauce
+93,Cranberry Sauce,600,8,Sauce
+94,Buffalo Sauce,400,8,Sauce
+95,Chipotle Sauce,700,8,Sauce
+96,Hummus,600,8,Dip
+97,Guacamole,800,10,Dip
+98,Salsa,500,8,Dip
+99,Tzatziki,700,6,Dip
+100,Ranch Dip,1000,2,Dip
+101,Chocolate Chip Cookies,500,10,Dessert
+102,Vanilla Ice Cream,1000,12,Dessert
+103,Granola,700,15,Snack
+104,Greek Yogurt,800,20,Dairy
+105,Brie Cheese,1200,18,Dairy
+106,Gouda Cheese,1500,15,Dairy
+107,Cheddar Cheese,2000,10,Dairy
+108,Mozzarella Cheese,1800,12,Dairy
+109,Parmesan Cheese,2500,5,Dairy
+110,Swiss Cheese,2000,10,Dairy
+111,French Bread,500,20,Bakery
+112,Whole Wheat Bread,700,15,Bakery
+113,Multigrain Bread,800,10,Bakery
+114,Rye Bread,600,15,Bakery
+115,Sourdough Bread,1200,10,Bakery
+116,Bagels,1000,10,Bakery
+117,Croissants,1500,8,Bakery
+118,Muffins,1800,10,Bakery
+119,Pita Bread,500,15,Bakery
+120,Tortilla,300,20,Bakery
+121,Pretzels,800,12,Snack
+122,Popcorn,400,15,Snack
+123,Nachos,900,8,Snack
+124,Pepperoni,1000,10,Meat
+125,Salami,1500,5,Meat
+126,Ham,1200,10,Meat
+127,Roast Beef,2000,10,Meat
+128,Turkey,1800,12,Meat
+129,Lamb,2500,5,Meat
+130,Pork Chops,1800,10,Meat
+131,Duck,3000,7,Meat
+132,Goose,3500,6,Meat
+133,Veal,2000,8,Meat
+134,Tofu,500,15,Vegetarian
+135,Tempeh,800,12,Vegetarian
+136,Seitan,1200,10,Vegetarian
+137,Edamame,700,8,Vegetarian
+138,Black Beans,400,20,Vegetarian
+139,Chickpeas,500,15,Vegetarian
+140,Lentils,600,18,Vegetarian
+141,Pinto Beans,300,20,Vegetarian
+142,Green Beans,200,15,Vegetarian
+143,Sweet Potatoes,800,10,Vegetarian
+144,Butternut Squash,1000,10,Vegetarian
+145,Zucchini,400,15,Vegetarian
+146,Eggplant,500,10,Vegetarian
+147,Yellow Squash,300,12,Vegetarian
+148,Red Bell Pepper,700,8,Vegetarian
+149,Green Bell Pepper,500,10,Vegetarian
+150,Jalapeno Pepper,200,15,Vegetarian
+151,Hot Dogs,800,10,Meat
+152,Burgers,1200,12,Meat
+153,Beef Jerky,1500,5,Meat
+154,Fried Chicken,2000,8,Meat
+155,Chicken Nuggets,1000,12,Meat
+156,Fish Sticks,700,15,Meat
+157,Shrimp,1500,10,Seafood
+158,Lobster,3000,5,Seafood
+159,Crab,2500,8,Seafood
+160,Oysters,2000,10,Seafood
+161,Clams,1500,12,Seafood
+162,Scallops,1800,8,Seafood
+163,Calamari,1000,10,Seafood
+164,Salmon Fillet,2500,5,Seafood
+165,Tuna,2000,8,Seafood
+166,Trout,1800,10,Seafood
+167,Mackerel,1500,12,Seafood
+168,Haddock,1000,15,Seafood
+169,Swordfish,3000,5,Seafood
+170,Anchovies,500,15,Seafood
+171,Sardines,400,20,Seafood
+172,Mussels,1200,10,Seafood
+173,Soy Milk,500,15,Dairy Alternative
+174,Almond Milk,800,12,Dairy Alternative
+175,Coconut Milk,1200,10,Dairy Alternative
+176,Rice Milk,700,8,Dairy Alternative
+177,Oat Milk,1000,10,Dairy Alternative
+178,Hemp Milk,1500,5,Dairy Alternative
+179,Spaghetti,300,20,Pasta
+180,Macaroni,400,15,Pasta
+181,Fettuccine,500,10,Pasta
+182,Penne,600,12,Pasta
+183,Rigatoni,700,8,Pasta
+184,Lasagna,800,10,Pasta
+185,Tagliatelle,900,15,Pasta
+186,Orzo,1000,10,Pasta
+187,Ravioli,1500,5,Pasta
+188,Tortellini,2000,8,Pasta
+189,Gnocchi,2500,10,Pasta
+190,Angel Hair,1800,12,Pasta
+191,Couscous,800,15,Grain
+192,Quinoa,1200,10,Grain
+193,Barley,500,15,Grain
+194,Bulgur,600,12,Grain
+195,Farro,700,8,Grain
+196,Millet,300,20,Grain
+197,Brown Rice,1000,10,Grain
+198,Wild Rice,1500,5,Grain
+199,White Rice,500,10,Grain
+200,Jasmine Rice,1200,4,Grain

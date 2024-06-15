@@ -1,0 +1,60 @@
+package ThreeDataStructure;
+
+public class QueueAdt implements Queue {
+
+    private Product[] queue;
+    private int front;
+    private int rear;
+    private int maxSize;
+    private int nItems;
+
+    public QueueAdt(int maxSize) {
+        this.maxSize = maxSize;
+        front = 0;
+        rear = -1;
+        nItems = 0;
+        queue = new Product[maxSize];
+    }
+
+    @Override
+    public void enqueue(Product item) {
+
+        if (rear == maxSize - 1) {
+            rear = -1;
+        }
+        queue[++rear] = item;
+        nItems++;
+        
+        
+    }
+
+    @Override
+    public Product dequeue() {
+        Product temp = queue[front++];
+        if (front == maxSize) {
+            front = 0;
+        }
+        nItems--;
+        return temp;
+    }
+
+    @Override
+    public Product first() {
+        return queue[front];
+    }
+
+    @Override
+    public boolean isFull() {
+        return nItems == maxSize;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return nItems == 0;
+    }
+
+    @Override
+    public int size() {
+        return nItems;
+    }
+}

@@ -1,0 +1,53 @@
+package ThreeDataStructure;
+
+public class QueueMain {
+
+    public static void main(String[] args) {
+    	
+    	long startTimeStack = System.currentTimeMillis(); // Start time function
+    
+        QueueAdt queueList = new QueueAdt(5);
+        
+
+        // Enqueue Product instances
+        queueList.enqueue(new Product("Choco Ice Cream", 2500, 10));
+        queueList.enqueue(new Product("Milk Ice Cream", 1500, 5));
+        queueList.enqueue(new Product("StrawBerry Ice Cream", 1500, 5));
+        queueList.enqueue(new Product("BlueBerry Ice Cream", 1500, 5));
+        queueList.enqueue(new Product("Vanilla Ice Cream", 1500, 5));
+        
+        int size = queueList.size();
+        System.out.println("Orignial Queue: " + size);
+        // Dequeue and display products
+        
+  
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        
+        
+        // Dequeue and display products
+        int size2 = queueList.size();
+        System.out.println("Final Queue Size: " + size2 + "\n");
+        
+        
+        long endTimeStack = System.currentTimeMillis();
+        long totalTimeStack = endTimeStack - startTimeStack;
+        System.out.println("ArrayList Total time: " + totalTimeStack + "ms");
+
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc(); // Optional, but may affect timing
+        long totalMemoryStack = runtime.totalMemory();
+        long freeMemoryStack = runtime.freeMemory();
+        long usedMemoryStack = totalMemoryStack - freeMemoryStack;
+        long megabytesStack = usedMemoryStack / (1024L * 1024L);
+        System.out.println("ArrayList Total Memory: " + megabytesStack + " MB\n");
+    }
+}
+
+
+
+
+

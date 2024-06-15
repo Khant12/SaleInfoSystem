@@ -1,0 +1,39 @@
+package ThreeDataStructure;
+
+public class QueueMain {
+
+    public static void main(String[] args) {
+        QueueAdt queueList = new QueueAdt(5);
+
+        // Enqueue Product instances
+        queueList.enqueue(new Product("Choco Ice Cream", 2500, 10));
+        queueList.enqueue(new Product("Milk Ice Cream", 1500, 5));
+        queueList.enqueue(new Product("StrawBerry Ice Cream", 1500, 5));
+        queueList.enqueue(new Product("BlueBerry Ice Cream", 1500, 5));
+        queueList.enqueue(new Product("Vanilla Ice Cream\", 1500, 5));
+        
+      
+        // Dequeue and display products
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+
+        // Enqueue more Product instances
+        queueList.enqueue(new Product("Product F", 60));
+        queueList.enqueue(new Product("Product G", 70));
+
+        // Dequeue and display products
+        System.out.println(queueList.dequeue());
+        System.out.println(queueList.dequeue());
+        
+        int size = queueList.size();
+        System.out.println(size);
+    }
+}
+
+
+
+
+

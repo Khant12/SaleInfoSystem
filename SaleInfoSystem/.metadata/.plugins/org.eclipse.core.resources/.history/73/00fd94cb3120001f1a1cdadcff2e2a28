@@ -1,0 +1,130 @@
+package SaleInfoSystem;
+
+import java.util.List;
+
+public class BinarySearchByName {
+	
+	
+    public static void binarySearchProduct(List<Product> productList, String name) {
+    	
+//      // Perform merge sort before binary search
+      MergeSortName.mergeSortProductList(productList);
+    	
+        long startTime = System.currentTimeMillis(); // Time function
+
+        int left = 0;
+        int right = productList.size() - 1;
+        boolean found = false;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Product midProduct = productList.get(mid);
+            int comparison = midProduct.getName().compareToIgnoreCase(name);
+
+            if (comparison == 0) {
+                System.out.println("\nProduct found: ");
+                printProductDetails(midProduct);
+                found = true;
+                break;
+            } else if (comparison < 0) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Product not found.");
+        }
+        
+        long endTime = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        
+        System.out.println("Binary Search Total time: " + totalTime + "ms");
+        
+        // Memory usage info
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc(); // Suggest GC to run
+        long total = runtime.totalMemory();
+        long free = runtime.freeMemory();
+        long usedMemory = total - free;
+        System.out.println("Used Memory: " + usedMemory + " bytes");
+        long megabytes = usedMemory / (1024L * 1024L);
+        System.out.println("Used Memory: " + megabytes + " MB");
+    }
+
+    private static void printProductDetails(Product product) {
+	    System.out.println("-------------------------------");
+        System.out.println("ID: " + product.getId());
+        System.out.println("Name: " + product.getName());
+        System.out.println("Price: " + product.getPrice());
+        System.out.println("Quantity: " + product.getQuantity());
+        System.out.println("Category: " + product.getCategory());
+	    System.out.println("-------------------------------\n");
+    }
+    
+    
+    public static void binarySearchOrder(List<Order> orderList, String customerName) {
+    	
+
+        int left = 0;
+        int right = orderList.size() - 1;
+        boolean found = false;
+        
+    	long startTime = System.currentTimeMillis(); // Time function
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            Order midOrder = orderList.get(mid);
+            int comparison = midOrder.getCustomerName().compareToIgnoreCase(customerName);
+
+            if (comparison == 0) {
+                found = true;
+                // Print the mid order
+                System.out.println("\nOrder found: ");
+                printOrderDetails(midOrder);
+
+                // Check to the left of the mid index for other matching orders
+                int leftIndex = mid - 1;
+                while (leftIndex >= left && orderList.get(leftIndex).getCustomerName().equalsIgnoreCase(customerName)) {
+                    printOrderDetails(orderList.get(leftIndex));
+                    leftIndex--;
+                }
+
+                // Check to the right of the mid index for other matching orders
+                int rightIndex = mid + 1;
+                while (rightIndex <= right && orderList.get(rightIndex).getCustomerName().equalsIgnoreCase(customerName)) {
+                    printOrderDetails(orderList.get(rightIndex));
+                    rightIndex++;
+                }
+
+                break;
+            } else if (comparison < 0) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Order not found.");
+        }
+        long endTime = System.currentTimeMillis();
+		long totalTime = endTime-startTime;
+		
+		System.out.println("Total time: " + totalTime + "ms");
+    }
+
+    private static void printOrderDetails(Order order) {
+	    System.out.println("-------------------------------");
+        System.out.println("Order Number: " + order.getOrderNumber());
+        System.out.println("Product ID: " + order.getProductId());
+        System.out.println("Product Name: " + order.getProductName());
+        System.out.println("Total Price: " + order.getTotalPrice());
+        System.out.println("Quantity: " + order.getQuantity());
+        System.out.println("Customer Name: " + order.getCustomerName());
+        System.out.println("Customer Address: " + order.getCustomerAddress());
+        System.out.println("Customer Phone: " + order.getCustomerPhone());
+        System.out.println("-------------------------------\n");
+    }
+
+}

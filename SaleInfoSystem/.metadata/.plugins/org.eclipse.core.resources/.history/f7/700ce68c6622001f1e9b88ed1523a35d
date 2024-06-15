@@ -1,0 +1,36 @@
+package ThreeDataStructure;
+
+public class StackMain {
+
+    public static void main(String[] args) {
+    	
+        StackAdt adt = new StackAdt(5);
+
+        // Create Product instances
+
+		Product p1 = new Product("Choco Ice Cream", 2500, 10);
+		Product p2 = new Product( "Milk Ice Cream", 1500, 5);
+		Product p3 = new Product("StrawBerry Ice Cream", 1500, 5);
+		Product p4 = new Product("BlueBerry Ice Cream", 1500, 5);
+		Product p5 = new Product("Vanilla Ice Cream", 1500, 5);
+
+        // Push Product instances onto the stack
+        adt.push(p1);
+        adt.push(p1);
+        adt.push(p1);
+        adt.push(p4);
+        adt.push(p5);
+        System.out.println();
+
+        // Pop and display products from the stack
+        while (!adt.isEmpty()) {
+            Product poppedProduct = adt.pop();
+            System.out.println("Popped product: " + poppedProduct.getName() + " $" + poppedProduct.getPrice() + " Qty: " + poppedProduct.getQuantity());
+        }
+
+        System.out.println("Empty", + adt.isEmpty());
+    }
+}
+
+
+

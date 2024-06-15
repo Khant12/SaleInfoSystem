@@ -1,0 +1,10 @@
+package ThreeDataStructure;
+
+public interface Stack {
+    public void push(Product product);
+    public Product pop();
+    public Product peek();
+    public boolean isEmpty();
+    public boolean isFull();
+    public int size();
+}

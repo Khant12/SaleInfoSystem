@@ -1,0 +1,19 @@
+1715517300833	Delete element
+1715519922545	Delete element
+1715519974201	Rename type 'SaleOperation'
+1715520555705	Rename type 'MergeSort'
+1715520594333	Rename compilation unit 'MegaSort.java'
+1715701363904	Delete element
+1715702924090	Delete element
+1715702938206	Delete element
+1715703051541	Delete element
+1715874879387	Rename compilation unit 'AdminInterface.java'
+1715875167638	Rename type 'AdminMainMenu'
+1715875544855	Rename type 'AdminOp'
+1715878765940	Rename type 'CustomerOrder'
+1715884493059	Rename method 'exitInterface'
+1715884771480	Rename field 'adminOperation'
+1715919726758	Delete element
+1715950673714	Rename field 'id'
+1715950740446	Rename field 'orderid'
+1715969243770	Rename method 'searchByName'

@@ -1,0 +1,267 @@
+package SaleInfoSystem;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class AdminProductOp implements AdminProductInterface {
+	
+	AdminMenu adminMenu = new AdminMenu();
+    Scanner scanner = new Scanner(System.in);
+    
+    static ArrayList<Product> productList = new ArrayList<>();
+    SaleView sv = new SaleView();
+	
+    private static final String FILENAME = "products.txt"; // File name to store product data
+
+    public void currentProduct() {
+        // Load products from file if available, otherwise use default products
+
+        if (!loadProductsFromFile()) {
+            loadDefaultProducts();
+        	saveProductsToFile();
+        		
+        	
+        }
+//        displayProducts();
+    }
+    
+    @Override
+    public void addProduct() {
+    	
+        System.out.println("** Enter product details **");
+        while (true) {
+            // Input product details
+            System.out.print("Enter product ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            // Check if the product ID already exists
+            boolean idExists = productList.stream().anyMatch(product -> product.getId() == id);
+            if (idExists) {
+                System.out.println("Product with the same ID already exists. Please enter a different ID.");
+                continue;
+            }
+
+            System.out.print("Enter product name: ");
+            String name = scanner.nextLine();
+
+            // Check if the product name already exists
+            boolean nameExists = productList.stream().anyMatch(product -> product.getName().equalsIgnoreCase(name));
+            if (nameExists) {
+                System.out.println("Product with the same name already exists. Please enter a different name.");
+                continue;
+            }
+
+            System.out.print("Enter product price: ");
+            int price = scanner.nextInt();
+
+            System.out.print("Enter product quantity: ");
+            int quantity = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            System.out.print("Enter product category: ");
+            String categoryInput = scanner.nextLine();
+            // Capitalize the first character
+            String category = categoryInput.substring(0, 1).toUpperCase() + categoryInput.substring(1);
+
+            // Create a new Product object and add it to the ArrayList
+            Product newProduct = new Product(id, name, price, quantity, category);
+
+            productList.add(newProduct);
+
+            saveProductsToFile(); // Save products to file after adding
+
+            System.out.print("Do you want to add another product? (yes/no): ");
+            String choice = scanner.nextLine();
+            if (!choice.equalsIgnoreCase("yes")) {
+            	adminMenu.productManagerMenu();
+            }
+        }
+    }
+
+    @Override
+    public void removeProduct() {
+        while (true) {
+            System.out.print("Enter product ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            System.out.print("Enter product name: ");
+            String name = scanner.nextLine();
+
+            Iterator<Product> iterator = productList.iterator();
+            while (iterator.hasNext()) {
+                Product product = iterator.next();
+                if (product.getId() == id && product.getName().equals(name)) {
+                    iterator.remove(); // Removes the current product from the list
+                    System.out.println("Product with ID " + id + " and name " + name + " has been removed.");
+                    displayProducts();
+                    break;
+                }
+            }
+            saveProductsToFile(); // Save products to file after removing
+
+            System.out.print("Do you want to remove another product? (yes/no): ");
+            String choice = scanner.nextLine();
+            if (!choice.equalsIgnoreCase("yes")) {
+            	adminMenu.productManagerMenu();
+            }
+        }
+        // Remove product by ID and name
+    }
+
+    @Override
+    public void alterProduct() {
+        // Alter product quantity and price by ID
+        System.out.print("Enter product ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+
+        Iterator<Product> iterator = productList.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getId() == id) {
+                System.out.print("Change Product quantity: ");
+                int newQuantity = scanner.nextInt();
+                product.setQuantity(newQuantity); 
+
+                System.out.print("Change Product Price: ");
+                int newPrice = scanner.nextInt();
+                product.setPrice(newPrice);
+
+                System.out.println("Product with ID " + id + " has been altered.");
+                displayProducts();
+                break;
+            }
+        }
+        saveProductsToFile(); // Save products to file after altering
+    }
+
+    @Override
+    public void exitInterface() {
+        System.out.println("Exiting the program...");
+        System.exit(0);
+    }
+
+    public static void displayProducts() {
+        // Display product details
+        int maxNameLength = 0;
+        for (Product pro : productList) {
+            if (pro.getName().length() > maxNameLength) {
+                maxNameLength = pro.getName().length();
+            }
+        }
+
+        System.out.println("List of products:");
+        Iterator<Product> itr = productList.iterator();
+        System.out.println("---------------------------------------------------------------------------------------");
+        System.out.println("|  ID  |   Name                           |  Price    |  Quantity  |   Category       |");
+        System.out.println("---------------------------------------------------------------------------------------");
+        while (itr.hasNext()) {
+            Product pro = itr.next();
+            System.out.printf("| %-5s| %-"+(maxNameLength + 11)+"s| %-10s| %-11s| %-17s|\n", pro.getId(), pro.getName(), pro.getPrice(), pro.getQuantity(), pro.getCategory());
+        }
+        System.out.println("---------------------------------------------------------------------------------------\n");
+    }
+
+    private void saveProductsToFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILENAME))) {
+            for (Product product : productList) {
+                writer.println(product.getId() + "," + product.getName() + "," + product.getPrice() + "," + product.getQuantity() + "," + product.getCategory());
+            }
+            System.out.println("Product data saved to file.\n");
+        } catch (IOException e) {
+//        	e.printStackTrace();
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    protected boolean loadProductsFromFile() {
+        File file = new File(FILENAME);
+        if (!file.exists()) {
+            System.out.println("No product data file found.");
+            return false;
+        }
+        try (Scanner fileScanner = new Scanner(file)) {
+            while (fileScanner.hasNextLine()) {
+                String[] parts = fileScanner.nextLine().split(",");
+                if (parts.length == 5) {
+                    int id = Integer.parseInt(parts[0]);
+                    String name = parts[1].trim(); // trim spaces
+                    int price = Integer.parseInt(parts[2]);
+                    int quantity = Integer.parseInt(parts[3]);
+                    String category = parts[4].trim();
+                    
+                    // Check if the product already exists in the list
+                    boolean productExists = productList.stream()
+                            .anyMatch(product -> product.getId() == id && product.getName().equals(name));
+                    
+                    if (!productExists) {
+                        productList.add(new Product(id, name, price, quantity, category));
+                    }
+                }
+            }
+            return true;
+        } catch (IOException e) {
+            System.err.println("Error reading from file: " + e.getMessage());
+            return false;
+        }
+    }
+
+
+    private void loadDefaultProducts() {
+        // Load default products if no data file found
+        Product p = new Product(1, "Pepsi", 1500, 10, "Drink");
+        Product p1 = new Product(2, "Nabati", 500, 10, "Snack");
+        Product p2 = new Product(3, "Egg", 300, 10, "Food");
+        Product p3 = new Product(4, "Soybean oil", 2500, 10, "Vegetable oil");
+        productList.add(p);
+        productList.add(p1);
+        productList.add(p2);
+        productList.add(p3);
+        
+        
+    }
+
+    @Override
+    public void displayProduct() {
+        displayProducts();
+    }
+
+    @Override
+    public void sortByName() {
+    	
+        MergeSortName.mergeSortProductList(productList);
+        System.out.println("Sorted By Name is success.\n");
+//        displayProducts();
+        saveProductsToFile();
+    }
+
+    @Override
+    public void searchProduct() {
+    	
+    	System.out.println("** Welcome to Search Product Name ** ");
+        System.out.print("Enter the Product Name: ");
+        String name = scanner.nextLine().trim(); // Trim spaces
+        System.out.println(name);
+//        
+//        LinearSearchProductName.linearSearchProduct(AdminProductOp.productList, name);
+
+
+////
+//         Perform the binary search
+//     
+//        BinarySearchByName.binarySearchProduct(AdminProductOp.productList, name);
+    }
+
+
+	@Override
+	public void BackToAdminMenu() {
+		adminMenu.adminMainMenu();
+		
+	}
+}
